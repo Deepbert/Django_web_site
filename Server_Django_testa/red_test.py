@@ -1,13 +1,17 @@
+import pytest
 from selenium import webdriver
 
-def testy_test():
+@pytest.fixture
+def browser():
+    browser = webdriver.Chrome()
+    yield browser
+    browser.quit()
 
-    driver = webdriver.Chrome()
-    driver.get('http://127.0.0.1:8000/home/')
+def test_title(browser):
 
-    print(driver.title)
+    browser.get('http://127.0.0.1:8000/home/')
 
-    assert driver.title == 'Server4'
+    assert browser.title == 'Server4'
 
 
 
