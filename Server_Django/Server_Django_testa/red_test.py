@@ -1,6 +1,9 @@
 import pytest
-import time
 from selenium import webdriver
+from django.urls import resolve
+from django.test import TestCase
+from home.views import home_visit
+
 
 @pytest.fixture
 def browser():
@@ -22,6 +25,13 @@ def test_title(browser):
 
     assert browser.title == 'Server4'
 
+def test_home_visit():
+    found = resolve('/home/')
+    assert found.func == home_visit
 
+class HomePageTest(TestCase):
 
+    def test_uses_home_template(self):
+        response = self.client.get('/home/')
+        self.assertTemplateUsed(response, 'home/home.html')
 
