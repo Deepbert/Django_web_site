@@ -1,5 +1,5 @@
 
-from django.urls import resolve
+from django.urls import resolve,reverse
 from django.test import TestCase
 from django.test import SimpleTestCase
 
@@ -23,15 +23,15 @@ class HomePageTest(TestCase):
 
     def test_view_url_exists_at_proper_location(self):
         resp = self.client.get('/')
-        assert resp.status.code == 200
+        assert resp.status_code == 200
 
     def test_view_yrl_by_name(self):
         resp = self.client.get(reverse('home'))
-        assert resp.status.code == 200
+        assert resp.status_code == 200
 
     def test_views_uses_correct_template(self):
         resp = self.client.get(reverse('home'))
-        assert resp.status.code == 200
+        assert resp.status_code == 200
         self.assertTemplateUsed(resp, 'home.html')
 
 
