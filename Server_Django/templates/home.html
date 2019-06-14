@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block content %}
 
 
-<body>
+
 <div class="container text-center mt-4 mb-4">
     <h1>Server_hh</h1>
 </div>
@@ -12,5 +13,32 @@
     <input id="new_item_ID" class="form-control" placeholder="What are you need to do?">
 
 </div>
+
+
+<div class="container text-center">
+<h1><a href="#" class="badge badge-dark"> Зачем мы програмируем!? </a></h1>
+</div>
+
+
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col-md">
+            <img src="{% static "home/1.png" %}" class="img-fluid">
+        </div>
+    </div>
+</div>
+
+<div class="container text-center">
+<h1><a href="#" class="badge badge-danger">   Во славу сатаны конечно же!!!   </a></h1>
+</div>
+
+<ul>
+    {% for post in Murr %}
+    <li> {{ post }} </li>
+    {% endfor %}
+</ul>
+
+
 
 {% endblock content %}
